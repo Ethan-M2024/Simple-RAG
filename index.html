@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple RAG</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<aside id="sidebar">
+  <div class="side-head">
+    <span class="logo-dot"></span>
+    <h1>Simple RAG</h1>
+  </div>
+
+  <div class="side-section">
+    <div class="side-label">
+      <span>Projects</span>
+      <button class="icon-btn" id="newProjectBtn" title="New project">+</button>
+    </div>
+    <ul id="projectList" class="side-list"></ul>
+  </div>
+
+  <div class="side-section" id="docsSection" hidden>
+    <div class="side-label">
+      <span>Documents</span>
+    </div>
+    <input type="file" id="fileInput" multiple
+           accept=".pdf,.docx,.txt,.md,.png,.jpg,.jpeg,.tiff,.bmp,.webp" hidden>
+    <ul id="fileList" class="side-list files"></ul>
+    <div id="uploadStatus" class="upload-status" hidden></div>
+  </div>
+
+  <div class="side-section" id="chatsSection" hidden>
+    <div class="side-label">
+      <span>Chats</span>
+      <button class="icon-btn" id="newChatBtn" title="New chat">+</button>
+    </div>
+    <ul id="sessionList" class="side-list"></ul>
+  </div>
+
+  <div class="side-foot">local · qwen2.5:7b · chroma</div>
+</aside>
+
+<main id="main">
+  <div id="emptyState">
+    <div class="empty-inner">
+      <div class="empty-mark">✳</div>
+      <h2 id="emptyTitle">Select or create a project</h2>
+      <p id="emptyHint">Everything runs locally — documents, embeddings, and answers never leave this machine.</p>
+    </div>
+  </div>
+
+  <div id="chatView" hidden>
+    <header id="chatHeader">
+      <span id="chatTitle"></span>
+      <span id="chatMeta"></span>
+    </header>
+
+    <div id="messages"></div>
+
+    <div id="composerWrap">
+      <div id="composer">
+        <textarea id="questionInput" rows="1"
+                  placeholder="Ask about your documents…"></textarea>
+        <button id="attachBtn" title="Add documents">+</button>
+        <button id="sendBtn" title="Send" disabled>
+          <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M12 3.5 5 10.6l1.4 1.4 4.6-4.6V20h2V7.4l4.6 4.6L19 10.6z"/></svg>
+        </button>
+      </div>
+      <div id="composerHint">Answers run on a local 7B model — long questions can take a few minutes.</div>
+    </div>
+  </div>
+</main>
+
+
+<script src="/static/app.js"></script>
+</body>
+</html>
